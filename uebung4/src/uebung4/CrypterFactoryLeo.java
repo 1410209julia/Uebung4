@@ -23,7 +23,7 @@ public class CrypterFactoryLeo {
 				|| lala != key.NULL
 				|| lala != key.XOR) {
 
-			throw new IllegalKeyException("Verschlüsselung falsch");
+			//throw new IllegalKeyException("Verschlüsselung falsch");
 		}
 
 	}

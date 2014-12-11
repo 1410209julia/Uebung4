@@ -15,12 +15,12 @@ public class CrypterFactory {
 
 	public void createCrypter() throws IllegalKeyException {
 
-		CrypterFactory neu = new CrypterFactory("erbel", XOR);
+	//	CrypterFactory neu = new CrypterFactory("erbel", XOR);
 		
-		if (lala != key) {
+	//	if (lala != key) {
 			
 		}
 
 	}
 
-}
+//}
