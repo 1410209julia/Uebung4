@@ -5,11 +5,11 @@ import java.util.List;
 public class CrypterCaesar implements Crypter{
 	
 	int schluessel;
-	String verschluesselt;
+	String verschluesselt = "";
 	
 	public CrypterCaesar(String schluessel){
-		schluessel.toUpperCase();
-		this.schluessel = (schluessel.charAt(0)) - 64;
+		//schluessel.toUpperCase();
+		this.schluessel = (schluessel.toUpperCase().charAt(0)) - 64;
 		
 	}
 	
@@ -19,10 +19,16 @@ public class CrypterCaesar implements Crypter{
 	
 	@Override
 	public String encrypt(String message) throws CrypterException {
-		for(int i = 0; i < message.length(); i++){
-			verschluesselt += (message.charAt(i)) + schluessel;	
+		char eins;
+		for(int i = 0 ; i < message.length(); i++){
+			eins = (char)(message.charAt(i) + schluessel);
+			if ((int)eins > 90 || (int)eins < 65){
+				verschluesselt += Character.toString((char)(eins - 26));	
+			} else {
+				verschluesselt += Character.toString((char)(eins));	
 			}
-	return verschluesselt;	
+		}
+		return verschluesselt;	
 	}
 		
 

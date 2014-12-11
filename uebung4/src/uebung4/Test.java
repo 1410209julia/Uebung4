@@ -6,7 +6,7 @@ public class Test {
 	CrypterCaesar caesar = new CrypterCaesar("c");
 	System.out.println(caesar.getSchluessel());
 	
-	System.out.println(caesar.encrypt("APFEL"));
+	System.out.println(caesar.encrypt("ZEBRA"));
 	//nana
 	}
 }
