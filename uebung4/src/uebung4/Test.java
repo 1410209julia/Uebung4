@@ -7,6 +7,7 @@ public class Test {
 	System.out.println(caesar.getSchluessel());
 	
 	System.out.println(caesar.encrypt("APFEL"));
+	//nana
 	}
 }
 
