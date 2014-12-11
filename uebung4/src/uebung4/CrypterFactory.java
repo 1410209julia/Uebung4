@@ -4,11 +4,11 @@ public class CrypterFactory {
 	
 
 	private String schluessel;
-	private key lala;
+	private Key lala;
 
 	// Crypter lala;
 
-	public CrypterFactory(String schluessel, key lala) {
+	public CrypterFactory(String schluessel, Key lala) {
 		this.schluessel = schluessel;
 		this.lala = lala;
 	}

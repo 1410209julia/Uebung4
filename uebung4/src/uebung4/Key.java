@@ -1,5 +1,5 @@
 package uebung4;
 
-public enum key {
+public enum Key {
 	CAESAR, SUBSTITUTION, REVERSE, XOR, NULL
 }

@@ -5,9 +5,12 @@ import java.util.List;
 public class CrypterCaesar implements Crypter{
 	
 	int schluessel;
+	String verschluesselt;
 	
 	public CrypterCaesar(String schluessel){
+		schluessel.toUpperCase();
 		this.schluessel = (schluessel.charAt(0)) - 64;
+		
 	}
 	
 	public int getSchluessel(){
@@ -16,9 +19,12 @@ public class CrypterCaesar implements Crypter{
 	
 	@Override
 	public String encrypt(String message) throws CrypterException {
-		// TODO Auto-generated method stub
-		return null;
+		for(int i = 0; i < message.length(); i++){
+			verschluesselt += (message.charAt(i)) + schluessel;	
+			}
+	return verschluesselt;	
 	}
+		
 
 	@Override
 	public List<String> encrypt(List<String> messages) throws CrypterException {

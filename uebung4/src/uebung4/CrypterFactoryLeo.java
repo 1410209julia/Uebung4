@@ -3,27 +3,29 @@ package uebung4;
 public class CrypterFactoryLeo {
 
 	private String schluessel;
-	private key lala;
+	private Key key;
+	private Crypter crypter;
 
 	// Crypter lala;
 	//Test
 
-	public CrypterFactoryLeo(String schluessel, key lala) {
+	public CrypterFactoryLeo(String schluessel, Key key) {
 		this.schluessel = schluessel;
-		this.lala = lala;
+		this.key = key;
 	}
 
-	public void createCrypter() {
+	public void createCrypter() throws IllegalKeyException {
 
-		CrypterFactoryLeo f = new CrypterFactoryLeo("Hallo", lala);
+		CrypterFactoryLeo f = new CrypterFactoryLeo("Hallo", key);
+		
+		
+		if (key != Key.CAESAR
+				|| key != Key.REVERSE
+				|| key != Key.SUBSTITUTION
+				|| key != Key.NULL
+				|| key != Key.XOR) {
 
-		if (lala != key.CAESAR
-				|| lala != key.REVERSE
-				|| lala != key.SUBSTITUTION
-				|| lala != key.NULL
-				|| lala != key.XOR) {
-
-			//throw new IllegalKeyException("Verschlüsselung falsch");
+			throw new IllegalKeyException("Verschluesselung falsch");
 		}
 
 	}
