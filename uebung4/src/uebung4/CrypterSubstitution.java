@@ -6,10 +6,10 @@ import java.util.List;
 public class CrypterSubstitution implements Crypter {
 
 	
-	public char klartext[] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
+	private final char KLARTEXT[] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
 			'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
 			'Y', 'Z' };
-	public char code[] = { 'U', 'F', 'L', 'P', 'W', 'D', 'R', 'A', 'S', 'J', 'M',
+	private final char CODE[] = { 'U', 'F', 'L', 'P', 'W', 'D', 'R', 'A', 'S', 'J', 'M',
 			'C', 'O', 'N', 'Q', 'Y', 'B', 'V', 'T', 'E', 'X', 'H', 'Z', 'K',
 			'G', 'I' };
 	
@@ -22,8 +22,8 @@ public class CrypterSubstitution implements Crypter {
 		char verschluesselt[] = new char[message.length()];
 		for (int i = 0; i< message.length(); i++) {
 			for(int j = 0; j < 26; j++) {
-				if(klartext[j] == message.charAt(i)) {
-					verschluesselt[i]= code[j];
+				if(KLARTEXT[j] == message.charAt(i)) {
+					verschluesselt[i]= CODE[j];
 					break;
 				}
 				
@@ -48,8 +48,8 @@ public class CrypterSubstitution implements Crypter {
 		char hilfsChar[] = new char[cypherText.length()];
 		for (int i = 0; i< cypherText.length(); i++) {
 			for(int j = 0; j < 26; j++) {
-				if(code[j] == cypherText.charAt(i)) {
-					hilfsChar[i]= klartext[j];
+				if(CODE[j] == cypherText.charAt(i)) {
+					hilfsChar[i]= KLARTEXT[j];
 					break;
 				}
 				
