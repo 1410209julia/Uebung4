@@ -51,7 +51,13 @@ public class CrypterFactory {
 	}
 	
 	public Crypter createCrypter(CrypterOption verschluesselung)throws IllegalKeyException{
-		return createCrypter(null, verschluesselung);
+		if (verschluesselung.equals(CrypterOption.CAESAR) || 
+				verschluesselung.equals(CrypterOption.SUBSTITUTION) || 
+				verschluesselung.equals(CrypterOption.XOR)){
+		throw new IllegalKeyException("Benötigt einen Schlüssel: ");
+		} else {
+			return createCrypter(null, verschluesselung);
+		}
 	}
 }
 

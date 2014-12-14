@@ -37,7 +37,7 @@ class CrypterXOR extends CrypterAbstract{
 	@Override
 	public String decrypt(String cypherText) throws CrypterException {
 		for (int i = 0; i < cypherText.length();i++){
-			if(cypherText.charAt(i) <= 64 || cypherText.charAt(i) >= 95){
+			if(cypherText.charAt(i) <64 || cypherText.charAt(i) > 95){
 				throw new CrypterException("Ungültige Zeichen in der Nachricht");
 			}
 		}

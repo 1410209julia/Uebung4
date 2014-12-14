@@ -7,7 +7,8 @@ public class IllegalKeyException extends CrypterException {
 		super(message + key);
 	}
 	
-	public IllegalKeyException(){
+	public IllegalKeyException(String message){
+		super(message);
 	}
 
 }

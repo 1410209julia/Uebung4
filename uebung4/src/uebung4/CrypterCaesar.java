@@ -21,6 +21,7 @@ public class CrypterCaesar extends CrypterAbstract{
 		if(!checkMessage(message)){
 			throw new CrypterException("Ungültige Zeichen in der Nachricht");
 		} else {
+			message = message.toUpperCase();
 		String encoded = "";
 		for(int i = 0 ; i < message.length(); i++){
 			if (message.charAt(i) + key > 90 ){
