@@ -18,6 +18,8 @@ public class testSubstitution{
 	
 	System.out.println(substitution.encrypt("LILA"));
 	System.out.println(substitution.decrypt("CSCU"));
+	System.out.println(substitution.encrypt("ABCDE"));
+	System.out.println(substitution.decrypt("UFLPW"));
 	
 	ArrayList<String> liste = new ArrayList<String>();
 	liste.add("BOB");
