@@ -1,25 +1,22 @@
 package uebung4;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Testungleich {
-	public static void main(String[] args) throws CrypterException{
-	/*
-		CrypterReverse r = new CrypterReverse();
-		System.out.println(r.encrypt("TPERULEZ"));
-		System.out.println(r.decrypt(r.encrypt("TPERULEZ")));
-		ArrayList <String> a = new ArrayList <String>();
-		a.add("APFEL");
-		a.add("GURKE");
-		System.out.println(r.encrypt(a));
-		System.out.println(r.decrypt(r.encrypt(a)));
-	*/	
-		CrypterXOR x = new CrypterXOR("TPErules");
-		System.out.println(x.encrypt("ABCDEFGHIJKLMNOPQRSTUVWXYZ"));
-		System.out.println(x.decrypt(x.encrypt("ABCDEFGHIJKLMNOPQRSTUVWXYZ")));
-		//System.out.println(x.decrypt(x.encrypt("AMEISE")));
+	public static void main(String[] args) throws CrypterException, IllegalKeyException{
+		String geheimbotschaft = "QOZEG]A[UXDKZIZLAB\\NUQIO^^RXYHADV[EFFJ\\\\[\\U_]YDVZABDZT\\V\\SKB@X";
 		
-	
+		Crypter xor = new CrypterFactory().createCrypter("IAMTHEONEWHOKNOCKS",Key.XOR);
+		Crypter reverse = new CrypterFactory().createCrypter(Key.REVERSE);
+		Crypter caesar = new CrypterFactory().createCrypter("L", Key.CAESAR);
+		Crypter sub = new CrypterFactory().createCrypter("MNBVCXYLKJHGFDSAPOIUZTREWQ",Key.SUBSTITUTION);
+		
+		geheimbotschaft = xor.decrypt(geheimbotschaft);
+		geheimbotschaft = reverse.decrypt(geheimbotschaft);
+		geheimbotschaft = caesar.decrypt(geheimbotschaft);
+		geheimbotschaft = sub.decrypt(geheimbotschaft);
+		System.out.println(geheimbotschaft);
+		
+		Crypter reverse1 = new CrypterFactory().createCrypter("A",Key.REVERSE);
+		System.out.println(reverse1.encrypt("LISA"));
 	}
 }
+

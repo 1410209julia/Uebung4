@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class testSubstitution{
 	public static void main (String [] args ) throws CrypterException {
 	
-	CrypterSubstitution substitution = new CrypterSubstitution();
+	CrypterSubstitution substitution = new CrypterSubstitution("UFLPWDRASJMCONQYBVTEXHZKGI");
 	//System.out.println(sub.encrypt("Hallo"));
 	
 	/*String hello = "Hello";

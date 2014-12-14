@@ -1,9 +1,13 @@
 package uebung4;
 
-public class IllegalKeyException extends Exception {
+@SuppressWarnings("serial")
+public class IllegalKeyException extends CrypterException {
 	
-	public IllegalKeyException(String message){
-		super(message);
+	public IllegalKeyException(String message, String key){
+		super(message + key);
+	}
+	
+	public IllegalKeyException(){
 	}
 
 }

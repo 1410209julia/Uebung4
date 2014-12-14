@@ -3,17 +3,16 @@ package uebung4;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CrypterXOR implements Crypter{
+class CrypterXOR implements Crypter{
 	
 	String key;
 		
 	public CrypterXOR(String k){
-		key = k.toUpperCase();
+		key = k;
 	 }
 	
 	@Override
 	public String encrypt(String message) throws CrypterException {
-		message = message.toUpperCase();
 		String verschluesselt = "";
 		for(int i = 0; i < message.length(); i++){
 			verschluesselt += Character.toString((char)((message.charAt(i) ^ key.charAt(i%key.length()))+64));

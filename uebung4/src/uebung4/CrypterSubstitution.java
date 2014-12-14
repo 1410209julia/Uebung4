@@ -5,15 +5,10 @@ import java.util.List;
 
 public class CrypterSubstitution implements Crypter {
 
+	String key;
 	
-	private final char KLARTEXT[] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
-			'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-			'Y', 'Z' };
-	private final char SCHLUESSEL[] = { 'U', 'F', 'L', 'P', 'W', 'D', 'R', 'A', 'S', 'J', 'M',
-			'C', 'O', 'N', 'Q', 'Y', 'B', 'V', 'T', 'E', 'X', 'H', 'Z', 'K',
-			'G', 'I' };
-	
-	public CrypterSubstitution() {
+	public CrypterSubstitution(String key) {
+		this.key = key;
 	}
 	
 	@Override
@@ -21,12 +16,12 @@ public class CrypterSubstitution implements Crypter {
 		String verschluesselt = "";
 		for (int i = 0; i< message.length(); i++) {
 			for(int j = 0; j < 26; j++) {
-				if(KLARTEXT[j] == message.charAt(i)) {
-					verschluesselt+= SCHLUESSEL[j];
+				if(j+65 == message.charAt(i)) {
+					verschluesselt+= key.charAt(j);
 				}
 			}
 		}
-		return verschluesselt.toString();
+		return verschluesselt;
 	}
 
 	@Override
@@ -43,14 +38,14 @@ public class CrypterSubstitution implements Crypter {
 		String entschluesselt = "";
 		for (int i = 0; i< cypherText.length(); i++) {
 			for(int j = 0; j < 26; j++) {
-				if(SCHLUESSEL[j] == cypherText.charAt(i)) {
-					entschluesselt += KLARTEXT[j];
+				if(key.charAt(j) == cypherText.charAt(i)) {
+					entschluesselt += Character.toString((char)(j+65));
 				}
 			}
 		}
-		return entschluesselt.toString();
+		return entschluesselt;
 	}
-
+	
 	@Override
 	public List<String> decrypt(List<String> cypherTexte) throws CrypterException {
 		ArrayList <String> entschluesselt = new ArrayList<String>();
