@@ -1,5 +1,5 @@
 package uebung4;
 
-public enum Key {
+public enum CrypterOption {
 	CAESAR, SUBSTITUTION, REVERSE, XOR, NULL
 }

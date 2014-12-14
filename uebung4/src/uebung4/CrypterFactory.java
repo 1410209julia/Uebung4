@@ -2,11 +2,11 @@ package uebung4;
 
 public class CrypterFactory {
 	
-	public Crypter createCrypter(String key,Key verschluesselung) throws IllegalKeyException {
+	public Crypter createCrypter(String key, CrypterOption crypter) throws IllegalKeyException {
 		if (key != null){
 			key = key.toUpperCase();
 		}
-		switch(verschluesselung){
+		switch(crypter){
 			case CAESAR: 
 				if(key.length() != 1 || key.charAt(0) < 65 || key.charAt(0) > 90 || key == null){
 					throw new IllegalKeyException("Schlüssel ungültig: ", key);
@@ -15,18 +15,18 @@ public class CrypterFactory {
 				}
 			case SUBSTITUTION :
 				if(key.length()!=26){
-					throw new IllegalKeyException("Kein Schlüssel benötigt: ",key);
+					throw new IllegalKeyException("Schluessel nicht 26 Zeichen lang: ",key);
 				} else {
 					for(int i = 0; i < key.length(); i++){
 						if(key.charAt(i) < 65 || key.charAt(i) > 90){
-							throw new IllegalKeyException("Schlüssel ungültig: ",key);
+							throw new IllegalKeyException("Schluessel ungueltig: ",key);
 						}
 					}
 					return new CrypterSubstitution(key);
 				}
 			case XOR:
 				if (key == null){
-					throw new IllegalKeyException("Schlüssel ungültig: ",key);
+					throw new IllegalKeyException("Schluessel ungueltig: ",key);
 				}else {
 					for(int i = 0; i < key.length(); i++){
 						if(key.charAt(i) < 65 || key.charAt(i) > 90){
@@ -50,7 +50,7 @@ public class CrypterFactory {
 		return null;
 	}
 	
-	public Crypter createCrypter(Key verschluesselung)throws IllegalKeyException{
+	public Crypter createCrypter(CrypterOption verschluesselung)throws IllegalKeyException{
 		return createCrypter(null, verschluesselung);
 	}
 }

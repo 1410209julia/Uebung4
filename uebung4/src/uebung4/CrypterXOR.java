@@ -3,7 +3,7 @@ package uebung4;
 import java.util.ArrayList;
 import java.util.List;
 
-class CrypterXOR implements Crypter{
+class CrypterXOR extends CrypterAbstract{
 	
 	String key;
 		
@@ -13,32 +13,49 @@ class CrypterXOR implements Crypter{
 	
 	@Override
 	public String encrypt(String message) throws CrypterException {
-		String verschluesselt = "";
+		if(!checkMessage(message)){
+			throw new CrypterException("Ungültige Zeichen in der Nachricht");
+		} else {
+		String encoded = "";
 		for(int i = 0; i < message.length(); i++){
-			verschluesselt += Character.toString((char)((message.charAt(i) ^ key.charAt(i%key.length()))+64));
+			encoded += Character.toString((char)((message.charAt(i) ^ key.charAt(i%key.length()))+64));
 		}
-		return verschluesselt;
+		return encoded;
+		}
 	}
 	
 	@Override
 	public List<String> encrypt(List<String> messages)
 			throws CrypterException {
-		List <String> l = new ArrayList<String>();
+		List <String> list = new ArrayList<String>();
 		for(String mess : messages){
-			l.add(encrypt(mess));
+			list.add(encrypt(mess));
 		}
-		return l;
+		return list;
 	}
 	
 	@Override
 	public String decrypt(String cypherText) throws CrypterException {
-		return encrypt(cypherText);
+		for (int i = 0; i < cypherText.length();i++){
+			if(cypherText.charAt(i) <= 64 || cypherText.charAt(i) >= 95){
+				throw new CrypterException("Ungültige Zeichen in der Nachricht");
+			}
+		}
+		String decoded = "";
+		for(int i = 0; i < cypherText.length(); i++){
+			decoded += Character.toString((char)((cypherText.charAt(i) ^ key.charAt(i%key.length()))+64));
+		}
+		return decoded;
 	}
+	
 	@Override
 	public List<String> decrypt(List<String> cypherTexte)
 			throws CrypterException {
-		
-		return encrypt(cypherTexte);
+		List <String> list = new ArrayList<String>();
+		for(String cypher : cypherTexte){
+			list.add(decrypt(cypher));
+		}
+		return list;
 	}
 }
 

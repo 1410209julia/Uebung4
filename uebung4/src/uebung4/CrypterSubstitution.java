@@ -3,7 +3,7 @@ package uebung4;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CrypterSubstitution implements Crypter {
+public class CrypterSubstitution extends CrypterAbstract {
 
 	String key;
 	
@@ -13,46 +13,55 @@ public class CrypterSubstitution implements Crypter {
 	
 	@Override
 	public String encrypt(String message) throws CrypterException {
-		String verschluesselt = "";
-		for (int i = 0; i< message.length(); i++) {
-			for(int j = 0; j < 26; j++) {
-				if(j+65 == message.charAt(i)) {
-					verschluesselt+= key.charAt(j);
+		if(!checkMessage(message)){
+			throw new CrypterException("Ungültige Zeichen in der Nachricht");
+		} else {
+			message = message.toUpperCase();
+			String encoded = "";
+			for (int i = 0; i< message.length(); i++) {
+				for(int j = 0; j < 26; j++) {
+					if(j+65 == message.charAt(i)) {
+					encoded += key.charAt(j);
+					}
 				}
 			}
+			return encoded;
 		}
-		return verschluesselt;
 	}
 
 	@Override
 	public List<String> encrypt(List<String> messages) throws CrypterException {
-		ArrayList<String> verschluesselt = new ArrayList<String>();
-		for(String a: messages) {
-			verschluesselt.add(encrypt(a));
+		ArrayList<String> encoded = new ArrayList<String>();
+		for(String mess: messages) {
+			encoded.add(encrypt(mess));
 		}
-		return verschluesselt;
+		return encoded;
 	}
 
 	@Override
 	public String decrypt(String cypherText) throws CrypterException {
-		String entschluesselt = "";
+		if(!checkMessage(cypherText)){
+			throw new CrypterException("Ungültige Zeichen in der Nachricht");
+		} else {
+		String decoded = "";
 		for (int i = 0; i< cypherText.length(); i++) {
 			for(int j = 0; j < 26; j++) {
 				if(key.charAt(j) == cypherText.charAt(i)) {
-					entschluesselt += Character.toString((char)(j+65));
+					decoded += Character.toString((char)(j+65));
 				}
 			}
 		}
-		return entschluesselt;
+		return decoded;
+		}
 	}
 	
 	@Override
 	public List<String> decrypt(List<String> cypherTexte) throws CrypterException {
-		ArrayList <String> entschluesselt = new ArrayList<String>();
+		ArrayList <String> decoded = new ArrayList<String>();
 		for(String a: cypherTexte) {
-			entschluesselt.add(this.decrypt(a));
+			decoded.add(this.decrypt(a));
 		}
-	return entschluesselt;
+	return decoded;
 	}
 
 }

@@ -2,11 +2,15 @@ package uebung4;
 
 import java.util.List;
 
-public class CrypterNull implements Crypter{
+public class CrypterNull extends CrypterAbstract{
 
 	@Override
 	public String encrypt(String message) throws CrypterException {
+		if(!checkMessage(message)){
+			throw new CrypterException("Ungültige Zeichen in der Nachricht");
+		} else {
 		return message;
+		}
 	}
 
 	@Override
@@ -16,7 +20,11 @@ public class CrypterNull implements Crypter{
 
 	@Override
 	public String decrypt(String cypherText) throws CrypterException {
-		return cypherText;
+		if(!checkMessage(cypherText)){
+			throw new CrypterException("Ungültige Zeichen in der Nachricht");
+		} else {
+			return cypherText;
+		}
 	}
 
 	@Override

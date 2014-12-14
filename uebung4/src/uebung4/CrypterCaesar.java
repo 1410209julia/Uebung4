@@ -3,68 +3,71 @@ package uebung4;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CrypterCaesar implements Crypter{
+public class CrypterCaesar extends CrypterAbstract{
 	
-	int schluessel;
+	int key;
 
-	public CrypterCaesar(String schluessel){
-		//schluessel.toUpperCase();
-		this.schluessel = (schluessel.toUpperCase().charAt(0)) - 64;
+	public CrypterCaesar(String key){
+		this.key = (key.charAt(0)) - 64;
 		
 	}
 	
-	public int getSchluessel(){
-		return (int)schluessel;
+	public int getKey(){
+		return key;
 	}
 	
 	@Override
 	public String encrypt(String message) throws CrypterException {
-		int eins;
-		String verschluesselt ="";
+		if(!checkMessage(message)){
+			throw new CrypterException("Ungültige Zeichen in der Nachricht");
+		} else {
+		String encoded = "";
 		for(int i = 0 ; i < message.length(); i++){
-			eins = (message.charAt(i) + schluessel);
-			if (eins > 90 ){
-				verschluesselt += Character.toString((char)(eins - 26));	
+			if (message.charAt(i) + key > 90 ){
+				encoded += Character.toString((char)(message.charAt(i) + key - 26));	
 			} else {
-				verschluesselt += Character.toString((char)(eins));	
+				encoded += Character.toString((char)(message.charAt(i) + key));	
 			}
 		}
-		return verschluesselt;	
+		return encoded;	
+		}
 	}
 		
 
 	@Override
 	public List<String> encrypt(List<String> messages) throws CrypterException {
-		ArrayList <String> uebersetzung = new ArrayList<String>();
+		ArrayList <String> encoded = new ArrayList<String>();
 		for (String mess : messages){
-			uebersetzung.add(this.encrypt(mess));
+			encoded.add(this.encrypt(mess));
 		}
-		return uebersetzung;
+		return encoded;
 	}
 	
 
 	@Override
 	public String decrypt(String cypherText) throws CrypterException {
-		int eins;
-		String entschluesselt = "";
+		if(!checkMessage(cypherText)){
+			throw new CrypterException("Ungültige Zeichen in der Nachricht");
+		} else {
+		String decoded = "";
 		for(int i = 0; i < cypherText.length() ; i++){
-			eins = (cypherText.charAt(i) - schluessel);
-			if(eins < 65){
-				entschluesselt += Character.toString((char)(eins + 26));
+			if((cypherText.charAt(i) - key) < 65){
+				decoded += Character.toString((char)((cypherText.charAt(i) - key) + 26));
 			} else {
-				entschluesselt += Character.toString((char)(eins));
+				decoded += Character.toString((char)((cypherText.charAt(i) - key)));
 			}
 		}
-		return entschluesselt;
+		return decoded;
+		}
 	}
 
 	@Override
 	public List<String> decrypt(List<String> cypherTexte) throws CrypterException {
-		ArrayList <String> entschluesseln = new ArrayList<String>();
+		ArrayList <String> decoded = new ArrayList<String>();
 			for(String mess: cypherTexte) {
-				entschluesseln.add(this.decrypt(mess));
+				decoded.add(this.decrypt(mess));
 			}
-		return entschluesseln;
+		return decoded;
 	}
 
 }
