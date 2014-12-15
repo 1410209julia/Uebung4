@@ -86,10 +86,41 @@ public class JuliaTest {
 	
 	@Test
 	public void crypterReverseTest()throws CrypterException{
+		Crypter reverse = new CrypterFactory().createCrypter(CrypterOption.REVERSE);
+		assertEquals("ZYXWVUTSRQPONMLKJIHGFEDCBA", reverse.encrypt("ABCDEFGHIJKLMNOPQRSTUVWXYZ"));
+		assertEquals("ABCDEFGHIJKLMNOPQRSTUVWXYZ", reverse.decrypt("ZYXWVUTSRQPONMLKJIHGFEDCBA"));
+		assertEquals("ESREVER", reverse.encrypt("reverse"));
+		assertEquals("REVERSE", reverse.decrypt("ESREVER"));
 		
+		List<String> list = Arrays.asList("DIES","IST","EIN","TEST");
+		List<String> list1 = Arrays.asList("SEID","TSI","NIE","TSET");
+		assertEquals(list1 , reverse.encrypt(list));
+		assertEquals(list , reverse.decrypt(list1));
+	}
+	
+	@SuppressWarnings("unused")
+	@Test (expected = IllegalKeyException.class)
+	public void crypterReverseAusnahmeKey() throws IllegalKeyException{
+		Crypter reverse = new CrypterFactory().createCrypter("" , CrypterOption.REVERSE);
+		Crypter reverse1 = new CrypterFactory().createCrypter("a" , CrypterOption.REVERSE);
+		Crypter reverse2 = new CrypterFactory().createCrypter("%", CrypterOption.REVERSE);
 	}
 	
 	
+	@Test (expected = CrypterException.class)
+	public void crypterReverseAusnahmeMessage() throws CrypterException{
+		Crypter reverse = new CrypterFactory().createCrypter("" , CrypterOption.REVERSE);
+		Crypter reverse1 = new CrypterFactory().createCrypter("a" , CrypterOption.REVERSE);
+		Crypter reverse2 = new CrypterFactory().createCrypter("%", CrypterOption.REVERSE);
+		
+		reverse.encrypt("Lis$5");
+		reverse1.decrypt("%/xsd/%");
+		
+		List <String> list = Arrays.asList("!fuel","§Sisi");
+		
+		reverse2.encrypt(list);
+		reverse2.decrypt(list);
+	}
 	
 
 }

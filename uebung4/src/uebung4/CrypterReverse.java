@@ -3,10 +3,19 @@ package uebung4;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Die Klasse repraesentiert CrypterReverse.
+ * Bei der Umkehrverschluesselung wird der Text einfach nur umgedreht
+ * d.h. aus "TPE" wird "EPT".
+ */
 public class CrypterReverse extends CrypterAbstract{
 
+	/**
+	 * @see uebung4.Crypter#encrypt(java.lang.String)
+	 */
 	@Override
 	public String encrypt(String message) throws CrypterException {
+		message = message.toUpperCase();
 		if(!checkMessage(message)){
 			throw new CrypterException("Ungültige Zeichen in der Nachricht");
 		} else {
@@ -18,6 +27,9 @@ public class CrypterReverse extends CrypterAbstract{
 		}
 	}
 
+	/**
+	 * @see uebung4.Crypter#encrypt(java.lang.String)
+	 */
 	@Override
 	public List<String> encrypt(List<String> messages) throws CrypterException {
 		ArrayList<String> back = new ArrayList <String>();
@@ -27,6 +39,9 @@ public class CrypterReverse extends CrypterAbstract{
 		return back;
 	}
 
+	/**
+	 * @see uebung4.Crypter#encrypt(java.lang.String)
+	 */
 	@Override
 	public String decrypt(String cypherText) throws CrypterException {
 		if(!checkMessage(cypherText)){
@@ -36,6 +51,9 @@ public class CrypterReverse extends CrypterAbstract{
 		}
 	}
 
+	/**
+	 * @see uebung4.Crypter#encrypt(java.lang.String)
+	 */
 	@Override
 	public List<String> decrypt(List<String> cypherTexte)
 			throws CrypterException {

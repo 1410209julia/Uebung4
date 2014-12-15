@@ -3,7 +3,6 @@ package uebung4;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Diese Klasse repraesentiert CrypterSubstitution.
  * Die uebergebene Nachricht soll mit dem ebenfalls uebergebenen Schluessel substituiert werden.

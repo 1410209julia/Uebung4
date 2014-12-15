@@ -1,6 +1,5 @@
 package uebung4;
 
-
 /**
  * Die Klasse CrypterFactory, um Crypter-Objekte erzeugen zu koennen.
  * Sie enthaelt 2 Konstruktoren, fuer Crypter mit Schluessel und Crypter ohne Schluessel

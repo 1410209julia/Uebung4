@@ -3,14 +3,27 @@ package uebung4;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Diese Klasse repraesentiert CrypterXOR
+ * Bei der XOR-Verschluesselung werden Nachricht und Schluessel per XOR miteinander 
+ * verknuepft. 
+ */
 class CrypterXOR extends CrypterAbstract{
 	
+	/** Der Schluessel */
 	String key;
 		
-	public CrypterXOR(String k){
-		key = k;
+	/**
+	 * Intantiiert ein neues Objekt CrypterXOR
+	 * @param key der Schluessel
+	 */
+	public CrypterXOR(String key){
+		this.key = key;
 	 }
 	
+	/**
+	 * @see uebung4.Crypter#encrypt(java.lang.String)
+	 */
 	@Override
 	public String encrypt(String message) throws CrypterException {
 		if(!checkMessage(message)){
@@ -24,6 +37,9 @@ class CrypterXOR extends CrypterAbstract{
 		}
 	}
 	
+	/**
+	 * @see uebung4.Crypter#encrypt(java.lang.String)
+	 */
 	@Override
 	public List<String> encrypt(List<String> messages)
 			throws CrypterException {
@@ -34,6 +50,9 @@ class CrypterXOR extends CrypterAbstract{
 		return list;
 	}
 	
+	/**
+	 * @see uebung4.Crypter#encrypt(java.lang.String)
+	 */
 	@Override
 	public String decrypt(String cypherText) throws CrypterException {
 		for (int i = 0; i < cypherText.length();i++){
@@ -48,6 +67,9 @@ class CrypterXOR extends CrypterAbstract{
 		return decoded;
 	}
 	
+	/**
+	 * @see uebung4.Crypter#encrypt(java.lang.String)
+	 */
 	@Override
 	public List<String> decrypt(List<String> cypherTexte)
 			throws CrypterException {
