@@ -2,6 +2,9 @@ package uebung4;
 
 /**
  * Diese Klasse repraesentiert die Klasse CrypterAbstract, die das Interface Crypter implementiert.
+ * Sie wird gebraucht, da jeder Crypter anhand der Methode checkMessage die uebergebene Nachricht
+ *  erst auf Gueltigkeit
+ *  kontrollieren muss.
  * 
  */
 public abstract class CrypterAbstract implements Crypter{

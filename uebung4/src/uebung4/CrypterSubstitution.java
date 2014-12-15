@@ -3,14 +3,29 @@ package uebung4;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Diese Klasse repraesentiert CrypterSubstitution.
+ * Die uebergebene Nachricht soll mit dem ebenfalls uebergebenen Schluessel substituiert werden.
+ * D.h. der Buchstabe der Nachricht an der Indexposition 0, wird ersetzt mit dem Buchstaben des
+ *  Schluessels, welches ebenfalls die gleiche Indexpostion besitzt.
+ */
 public class CrypterSubstitution extends CrypterAbstract {
 
+	/** der Schluessel */
 	String key;
 	
+	/**
+	 * Intantiiert ein neues Objekt CrypterSubstitution
+	 * @param key der Schluessel
+	 */
 	public CrypterSubstitution(String key) {
 		this.key = key;
 	}
 	
+	/**
+	 * @see uebung4.Crypter#encrypt(java.lang.String)
+	 */
 	@Override
 	public String encrypt(String message) throws CrypterException {
 		if(!checkMessage(message)){
@@ -29,6 +44,9 @@ public class CrypterSubstitution extends CrypterAbstract {
 		}
 	}
 
+	/**
+	 * @see uebung4.Crypter#encrypt(java.util.List)
+	 */
 	@Override
 	public List<String> encrypt(List<String> messages) throws CrypterException {
 		ArrayList<String> encoded = new ArrayList<String>();
@@ -38,6 +56,9 @@ public class CrypterSubstitution extends CrypterAbstract {
 		return encoded;
 	}
 
+	/**
+	 * @see uebung4.Crypter#decrypt(java.lang.String)
+	 */
 	@Override
 	public String decrypt(String cypherText) throws CrypterException {
 		if(!checkMessage(cypherText)){
@@ -55,6 +76,9 @@ public class CrypterSubstitution extends CrypterAbstract {
 		}
 	}
 	
+	/**
+	 * @see uebung4.Crypter#decrypt(java.util.List)
+	 */
 	@Override
 	public List<String> decrypt(List<String> cypherTexte) throws CrypterException {
 		ArrayList <String> decoded = new ArrayList<String>();

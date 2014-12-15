@@ -8,12 +8,12 @@ package uebung4;
 public class CrypterFactory {
 	
 	/**
-	 * Creates a new Crypter object.
+	 * Erzeugt ein neues Crypter-Objekt mit fuer den Crypter benoetigten Schluessel
 	 *
-	 * @param key the key
-	 * @param crypter the crypter
-	 * @return the crypter
-	 * @throws IllegalKeyException the illegal key exception
+	 * @param key der Schluessel
+	 * @param crypter der Crypter
+	 * @return  crypter
+	 * @throws IllegalKeyException fuer ungueltige Schluesseleingabe
 	 */
 	public Crypter createCrypter(String key, CrypterOption crypter) throws IllegalKeyException {
 		if (key != null){
@@ -43,20 +43,20 @@ public class CrypterFactory {
 				}else {
 					for(int i = 0; i < key.length(); i++){
 						if(key.charAt(i) < 65 || key.charAt(i) > 90){
-							throw new IllegalKeyException("Schl�ssel ung�ltig: ",key);
+							throw new IllegalKeyException("Schluessel ungueltig: ",key);
 						}
 					}
 				}
 				return new CrypterXOR(key);
 			case NULL:
 				if(key != null){
-					throw new IllegalKeyException("Kein Schl�ssel ben�tigt: ",key);
+					throw new IllegalKeyException("Kein Schluessel benoetigt: ",key);
 				} else {
 					return new CrypterNull();
 				}
 			case REVERSE:
 				if(key != null){
-					throw new IllegalKeyException("Kein Schl�ssel ben�tigt: ",key);
+					throw new IllegalKeyException("Kein Schluessel benoetigt: ",key);
 				}
 				return new CrypterReverse();
 		}	
@@ -64,19 +64,19 @@ public class CrypterFactory {
 	}
 	
 	/**
-	 * Creates a new Crypter object.
+	 * Erzeugt ein neues Crypter-Objekt ohne benoetigten Schluessel
 	 *
 	 * @param verschluesselung the verschluesselung
 	 * @return the crypter
 	 * @throws IllegalKeyException the illegal key exception
 	 */
-	public Crypter createCrypter(CrypterOption verschluesselung)throws IllegalKeyException{
-		if (verschluesselung.equals(CrypterOption.CAESAR) || 
-				verschluesselung.equals(CrypterOption.SUBSTITUTION) || 
-				verschluesselung.equals(CrypterOption.XOR)){
-		throw new IllegalKeyException("Ben�tigt einen Schl�ssel: ");
+	public Crypter createCrypter(CrypterOption crypter)throws IllegalKeyException{
+		if (crypter.equals(CrypterOption.CAESAR) || 
+				crypter.equals(CrypterOption.SUBSTITUTION) || 
+				crypter.equals(CrypterOption.XOR)){
+		throw new IllegalKeyException("Benoetigt einen Schluessel: ");
 		} else {
-			return createCrypter(null, verschluesselung);
+			return createCrypter(null, crypter);
 		}
 	}
 }
