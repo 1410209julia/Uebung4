@@ -7,7 +7,7 @@ public class CrypterNull extends CrypterAbstract{
 	@Override
 	public String encrypt(String message) throws CrypterException {
 		if(!checkMessage(message)){
-			throw new CrypterException("Ungültige Zeichen in der Nachricht");
+			throw new CrypterException("Ungueltige Zeichen in der Nachricht");
 		} else {
 		return message;
 		}
@@ -21,7 +21,7 @@ public class CrypterNull extends CrypterAbstract{
 	@Override
 	public String decrypt(String cypherText) throws CrypterException {
 		if(!checkMessage(cypherText)){
-			throw new CrypterException("Ungültige Zeichen in der Nachricht");
+			throw new CrypterException("Ungueltige Zeichen in der Nachricht");
 		} else {
 			return cypherText;
 		}
