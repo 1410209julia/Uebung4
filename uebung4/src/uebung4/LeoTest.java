@@ -43,7 +43,6 @@ public class LeoTest {
 				CrypterOption.SUBSTITUTION);
 	}
 
-	@SuppressWarnings("unused")
 	@Test(expected = CrypterException.class)
 	public void crypterSubstitutionAusnahmeMessage() throws CrypterException {
 		Crypter sub = new CrypterFactory().createCrypter("12",

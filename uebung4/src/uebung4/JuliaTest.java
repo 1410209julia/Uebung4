@@ -5,8 +5,6 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.List;
 
-import junit.framework.Assert;
-
 import org.junit.Test;
 
 public class JuliaTest {
