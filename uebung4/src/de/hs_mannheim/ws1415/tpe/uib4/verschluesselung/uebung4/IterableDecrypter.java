@@ -5,55 +5,60 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Die Klasse IterableCrypter
+ * Die Klasse IterableDecrypter Läuft durch eine Liste und entschluesselt jedes
+ * Elemenent
  */
-public class IterableDecrypter implements Iterable<String>{
+public class IterableDecrypter implements Iterable<String> {
 
-	/** Die Liste stringList */
-	private List <String> stringList = new ArrayList<String>();
-	
+	/** Die Liste der Nachrichten */
+	private List<String> messages = new ArrayList<String>();
+
 	/** Der Crypter */
 	private Crypter crypter;
-	
+
 	/**
 	 * Instantiiert ein neues Iterable Decrypter mit einer uebergebenen Liste.
 	 *
-	 * @param stringListe die Liste
-	 * @param crypter der Crypter
+	 * @param stringListe
+	 *            die Liste
+	 * @param crypter
+	 *            der Crypter
 	 */
-	public IterableDecrypter(List<String> stringListe, Crypter crypter){
-		this.stringList = stringListe;
+	public IterableDecrypter(List<String> messages, Crypter crypter) {
+		this.messages = messages;
 		this.crypter = crypter;
 	}
-	
+
 	/**
-	 * Instantiiert ein neues Iterable Decrypter mit einem uebergebenen Iterable.
+	 * Instantiiert ein neues Iterable Decrypter mit einem uebergebenen
+	 * Iterable.
 	 *
-	 * @param a das Iterable
-	 * @param crypter der Crypter
+	 * @param a
+	 *            das Iterable
+	 * @param crypter
+	 *            der Crypter
 	 */
-	public IterableDecrypter(Iterable<String> a, Crypter crypter){
-	    for (String str : a) {
-            stringList.add(str);
-        }
-        this.crypter = crypter;
+	public IterableDecrypter(Iterable<String> iterables, Crypter crypter) {
+		for (String iterable : iterables) {
+			messages.add(iterable);
+		}
+		this.crypter = crypter;
 	}
-	
-	
+
 	/**
 	 * @see java.lang.Iterable#iterator()
 	 */
 	public Iterator<String> iterator() {
 		return new Iterator<String>() {
-			private int pos = 0;
+			private int position = 0;
 
 			public boolean hasNext() {
-				return (pos < stringList.size());
+				return (position < messages.size());
 			}
 
 			public String next() {
 				try {
-					return crypter.decrypt(stringList.get(pos++));
+					return crypter.decrypt(messages.get(position++));
 				} catch (CrypterException e) {
 					System.out.println(e.getMessage());
 				}
