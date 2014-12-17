@@ -1,4 +1,4 @@
-package uebung4;
+package de.hs_mannheim.ws1415.tpe.uib4.verschluesselung.uebung4;
 
 /**
  * Die Klasse CrypterFactory, um Crypter-Objekte erzeugen zu koennen.

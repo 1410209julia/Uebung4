@@ -1,4 +1,10 @@
-package uebung4;
+package de.hs_mannheim.ws1415.tpe.uib4.tests.uebung4;
+
+import de.hs_mannheim.ws1415.tpe.uib4.verschluesselung.uebung4.Crypter;
+import de.hs_mannheim.ws1415.tpe.uib4.verschluesselung.uebung4.CrypterException;
+import de.hs_mannheim.ws1415.tpe.uib4.verschluesselung.uebung4.CrypterFactory;
+import de.hs_mannheim.ws1415.tpe.uib4.verschluesselung.uebung4.CrypterOption;
+import de.hs_mannheim.ws1415.tpe.uib4.verschluesselung.uebung4.IllegalKeyException;
 
 public class SecretMessage {
 	public static void main(String[] args) throws CrypterException, IllegalKeyException{

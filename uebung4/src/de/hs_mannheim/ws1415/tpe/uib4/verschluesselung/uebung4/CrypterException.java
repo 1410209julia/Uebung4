@@ -1,4 +1,4 @@
-package uebung4;
+package de.hs_mannheim.ws1415.tpe.uib4.verschluesselung.uebung4;
 
 /**
  * Diese Klasse repraesentiert die Ausnahme CrypterException.
